@@ -1,1 +1,1 @@
-# flaskBlog_Codingnosis
+# Codingnosis blog site built with flask 
