@@ -1,5 +1,11 @@
 from flaskblog import db, login_manager
 from datetime import datetime
+from flask_login import UserMixin
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
 
 '''
 To run the database interface, enter python terminal within your project folder i.e. flaskblog
@@ -12,14 +18,13 @@ in our case. Do 'from flaskblog import db'
     -User.query.all()                                     all users
     -User.query.first()                                   first user
     -User.query.filter_by(username='Vuwan').all()         filter the users by username='Vuwan'
-    - user = User.query.filter_by(username='Vuwan').all() assigns the filtered result to the 'user' variable
-       
+    - user = User.query.filter_by(username='Vuwan').all() assigns the filtered result to the 'user' variable       
 '''
 #this is a database table representing User and is extending 
 # db.Model. It represents the user profile of the blog
 #to open db: 1) open python cli 2) from flaskblog import db 3) db.create_all() 4) db.session.commit() #to commit the changes
 #to query : User.query.all() : To filter the user by username- User.query.filter_by(username='Corey'.all())
-class User(db.Model):
+class User(db.Model, UserMixin):
     #these are the columns of the database table
     ##column 1
     id = db.Column(db.Integer, primary_key=True) 
