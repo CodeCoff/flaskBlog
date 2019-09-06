@@ -9,7 +9,7 @@ app = Flask(__name__)
 #the hash value was genereated  using a 'secrets' library in python terminal
 # import secrets
 # secrets.token_hex(16)   #here 16 means the byte
-app.config['SECRET_KEY'] = 'd005c033f3d943da37895a973c9a1346'
+app.config['SECRET_KEY'] = 'PUT_YOUR_SECRET_KEY_HERE'
 
 #this is our database. It resides in our config file. ///is for relative path from the current file
 app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///site.db' 
